@@ -35,6 +35,20 @@ const panels = {
   reels: document.getElementById("panel-reels")
 };
 
+function syncViewportHeight() {
+  document.documentElement.style.setProperty("--real-vh", `${window.innerHeight}px`);
+
+  const vv = window.visualViewport;
+  let overlayOffset = 0;
+
+  if (vv) {
+    // iOS Safari can overlay browser chrome over the page; compensate overlays for that area.
+    overlayOffset = Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop));
+  }
+
+  document.documentElement.style.setProperty("--browser-ui-offset", `${overlayOffset}px`);
+}
+
 function createPostCard(post) {
   return `
     <article class="post" data-like-card>
@@ -228,6 +242,16 @@ function selectTab(tabName) {
 renderContent();
 bindInteractionEvents();
 setupReelsObserver();
+syncViewportHeight();
+
+window.addEventListener("resize", syncViewportHeight);
+window.addEventListener("orientationchange", () => {
+  setTimeout(syncViewportHeight, 120);
+});
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", syncViewportHeight);
+  window.visualViewport.addEventListener("scroll", syncViewportHeight);
+}
 
 if (sessionStorage.getItem(AUTH_KEY) === "ok") {
   openApp();

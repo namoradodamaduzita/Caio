@@ -1,4 +1,7 @@
 :root {
+  --real-vh: 100vh;
+  --app-header-h: 102px;
+  --browser-ui-offset: 0px;
   --bg-a: #ffd7ea;
   --bg-b: #ffbfdc;
   --bg-c: #ffaecf;
@@ -273,6 +276,7 @@ body {
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
   background: #000000;
 }
 
@@ -296,10 +300,22 @@ body {
   height: 100%;
 }
 
+.reel-media-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 44%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0) 65%);
+}
+
 .reel-video {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center center;
   display: block;
   cursor: pointer;
   background: #000000;
@@ -309,11 +325,12 @@ body {
   position: absolute;
   left: 14px;
   right: 82px;
-  bottom: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom) + var(--browser-ui-offset));
   color: #f8f8f8;
   display: grid;
   gap: 6px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  z-index: 2;
 }
 
 .reel-user {
@@ -329,7 +346,7 @@ body {
 .reel-like-btn {
   position: absolute;
   right: 14px;
-  bottom: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom) + var(--browser-ui-offset));
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -337,6 +354,7 @@ body {
   background: rgba(0, 0, 0, 0.46);
   border: 1px solid rgba(255, 255, 255, 0.25);
   font-size: 26px;
+  z-index: 2;
 }
 
 .reel-like-btn.liked {
@@ -346,7 +364,7 @@ body {
 
 .sound-indicator {
   position: absolute;
-  top: 12px;
+  top: calc(12px + env(safe-area-inset-top));
   left: 50%;
   transform: translateX(-50%);
   padding: 6px 12px;
@@ -399,12 +417,21 @@ body {
   .login-screen,
   .app-shell {
     width: 100%;
-    min-height: 100vh;
+    min-height: var(--real-vh);
     border-radius: 0;
     border: 0;
   }
 
   .tab-panel {
-    height: calc(100vh - 102px);
+    height: calc(var(--real-vh) - var(--app-header-h));
+  }
+
+  #panel-reels {
+    height: calc(var(--real-vh) - var(--app-header-h));
+  }
+
+  .reel-item {
+    height: calc(var(--real-vh) - var(--app-header-h));
+    min-height: calc(var(--real-vh) - var(--app-header-h));
   }
 }
