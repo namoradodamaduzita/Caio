@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Dia 28</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="login-screen" id="loginScreen">
+    <h1 class="login-title">Para Voce</h1>
+    <p class="login-subtitle">tente acertar a senha</p>
+    <form class="login-form" id="loginForm">
+      <input id="passwordInput" type="password" placeholder="Digite a senha" autocomplete="off" required>
+      <button type="submit">Entrar</button>
+      <p class="error" id="errorText"></p>
+    </form>
+  </section>
+
+  <main class="app-shell hidden" id="appShell">
+    <header class="topbar">
+      <div class="logo">Nosso Dia 28</div>
+      <div class="top-actions">
+        <span title="Novo">+</span>
+        <span title="Favoritos">&hearts;</span>
+      </div>
+    </header>
+
+    <nav class="tabbar">
+      <button class="tab active" data-tab="feed">Feed</button>
+      <button class="tab" data-tab="reels">Reels</button>
+    </nav>
+
+    <section class="tab-panel active" id="panel-feed">
+      <div class="feed-list" id="feedList"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-reels">
+      <div class="reel-list" id="reelList"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
