@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Dia 28</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="login-screen" id="loginScreen">
+    <div class="login-orbit" aria-hidden="true">
+      <span class="wisp wisp-one"></span>
+      <span class="wisp wisp-two"></span>
+      <span class="wisp wisp-three"></span>
+      <span class="bow-mark"></span>
+      <span class="arrow-line"></span>
+    </div>
+    <p class="login-eyebrow">Desafio da princesa guerreira</p>
+    <h1 class="login-title">Desafio da Floresta</h1>
+    <p class="login-subtitle">tente acertar a senha</p>
+    <p class="login-hint">dica: data</p>
+    <form class="login-form" id="loginForm">
+      <input id="passwordInput" type="password" placeholder="Digite a data secreta" autocomplete="off" required>
+      <button type="submit">Atravessar a floresta</button>
+      <p class="error" id="errorText"></p>
+      <p class="login-note">seu tempo para acertar e ate voce chegar de viagem. Se nao conseguir, somente eu libero o site pessoalmente.</p>
+    </form>
+    <div class="forest-princess" aria-hidden="true">
+      <span class="ops-bubble">ops!</span>
+      <img class="merida-figure" src="merida.png" alt="">
+    </div>
+  </section>
+
+  <main class="app-shell hidden" id="appShell">
+    <header class="topbar">
+      <div class="logo">Foi com carinho :(</div>
+    </header>
+
+    <nav class="tabbar">
+      <button class="tab active" data-tab="feed">Feed</button>
+      <button class="tab" data-tab="reels">Reels</button>
+    </nav>
+
+    <section class="tab-panel active" id="panel-feed">
+      <div class="feed-list" id="feedList"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-reels">
+      <div class="reel-list" id="reelList"></div>
+    </section>
+  </main>
+  <audio id="feedAudio" src="musica.mp3" loop preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
